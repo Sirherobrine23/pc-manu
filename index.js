@@ -18,8 +18,7 @@ bot.help((ctx) => ctx.reply("Use o /start"))
 bot.action("delete", ({ deleteMessage }) => deleteMessage())
 
 bot.command("status", (ctx) => {
-    const username = ctx.from.username,
-    chat_id = ctx.chat.id
+    const username = ctx.from.username
     var test = require("./mongo").test
     test = eval(`test.${chat_id}`)
     console.log(username)
