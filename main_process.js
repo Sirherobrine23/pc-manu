@@ -67,12 +67,26 @@ function user_registey(json_config){
     }
 }
 
-function user_update(json_config){
-    return json_config
+function user_config(json_config){
+    const username = json_config.username
+    const save = JSON.parse(fs.readFileSync(save_path, "utf8"))
+    for (let goo in save){
+        var json_parse = save[goo]
+        for (let us in save[goo].username){
+            if (json_parse.username[us] === username) return json_parse
+            else us++
+        }
+        goo++
+    }
+    return null
+}
+
+function user_update(update){
+    return null
 }
 
 module.exports = {
     add_user: user_registey,
     verify: user_verify,
-    update: user_update
+    get: user_config
 }
